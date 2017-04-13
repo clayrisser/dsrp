@@ -8,5 +8,5 @@ curl -L https://get.docker.com | sudo bash
 ```
 ### DSRP
 ```
-curl -L https://github.com/jamrizzi/dsrp/blob/master/dsrp.sh | sudo bash
+curl -L https://raw.githubusercontent.com/jamrizzi/dsrp/master/dsrp.sh | sudo bash
 ```
