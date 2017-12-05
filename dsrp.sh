@@ -11,4 +11,4 @@ docker run -d --name letsencrypt --restart=unless-stopped \
        -v /volumes/certs:/etc/nginx/certs:rw \
        --volumes-from nginx-proxy \
        -v /var/run/docker.sock:/var/run/docker.sock:ro \
-       jrcs/docker-letsencrypt-nginx-proxy-companion:latest
+       jrcs/letsencrypt-nginx-proxy-companion:latest
