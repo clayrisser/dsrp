@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy:latest
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /etc/nginx/vhost.d
+      - /usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock
+      - /volumes/certs:/etc/nginx/certs
+
+  letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /volumes/certs:/etc/nginx/certs
+    volumes_from:
+      - nginx-proxy
+    environment:
+      ACME_CA_URI: https://acme-staging.api.letsencrypt.org/directory
